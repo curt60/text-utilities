@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Text Utilities</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/moodle.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54783083-1"></script>
+    <script src="scripts/analytics.js"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <a href="index.html" class="index"><span class="tu">TextUtilities</span>.net</a>
+        </div>
+        
+        <nav>
+            <a class="active" href="list.html">List Transform</a>
+            <a href="timesheet.html">Timesheet Processor</a>
+            <a href="moodle.html">Moodle Data Transform</a>
+            <a href="regex.html">RegEx Validation</a>
+        </nav>
+    </header>
+    <h1 class="title">List Transform</h1>   
+    <main>
+        <div class="intro">
+            <p>Click on the button to copy the text from the text field.  Try to paste the text (e.g. ctrl-v) afterwards in a different window, to se the effect</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut, reiciendis. Accusantium, totam aut. A, officia aliquam architecto praesentium quas consequatur odio dolor sunt asperiores accusantium fugit ipsa unde, officiis vero!</p>
+        </div>
+        <div class="controls">
+                <button onclick="commaList()">Comma</button>
+        </div>
+        <div class="text-container list">
+            <textarea class="list" id="text-input" placeholder="Input here."></textarea>
+            <textarea class="list" id="text-output" placeholder="Output here."></textarea>
+        </div>
+    </main>
+    <footer>
+            <p>The document.execCommand() method is not supported in IE9 and earlier</p>
+    </footer>
+    <script>
+    function commaList() {
+        var copyText = document.getElementById("text-input");
+        copyText.select();
+        document.execCommand("Copy");
+        alert("Copied the text: " + copyText.value);
+    };
+    </script>
+</body>
+</html>

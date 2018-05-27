@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+html {
+    background-color: #f9f9f9;
+    overflow-y: scroll;
+    height: 100%;
+    min-height: 100%;
+    font-size:16px;
+}
+
+body {
+    font-family: "PT Sans",sans-serif;
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    background: 0 0;
+    color: #333;
+    min-width: 18em;
+}
+
+header {
+    background: 0 0;
+    width: 65em;
+    margin: 0 auto;
+    max-width: 95%;
+    padding: 1em 0 .75em;
+    height: 3.75em;
+}
+
+header:after {
+    clear: both
+}
+
+header .logo {
+    float: left;
+    height: 2em;
+    line-height: 2em;
+    vertical-align: middle;
+}
+
+header .logo .index {
+    position: relative;
+    font-size: 30px;
+    letter-spacing: 5px;
+    text-rendering: geometricPrecision;
+    display: block;
+    color: #888;
+    transition: color .2s linear;
+}
+
+header .logo .index:hover {
+    color: #b3b3b3;
+}
+
+header .logo .index .tu {
+    color: #008aff;
+    transition: color .2s linear;
+}
+
+header .logo .index:hover .tu {
+    color: #70BEFF;
+}
+
+a {
+    color: #555;
+    text-decoration: none;
+    transition: color .2s linear;
+}
+
+a:focus {
+    outline-color: #008aff;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #70BEFF;
+}
+
+a.active {
+    color: #008aff;
+}
+
+a.active:hover {
+    cursor: default;
+    color: #008aff;
+}
+
+header nav {
+    line-height: 2em;
+    float: right
+}
+
+header nav a {
+    vertical-align: middle;
+    position: relative;
+    height: 2em;
+    margin-left: 2em;
+}
+
+main {
+    max-width: 95%;
+    width: 65em;
+    margin: 0 auto;
+}
+
+h1.title {
+    width: 100%;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: .5em 0;
+    font-weight: 400;
+    line-height: 1.2em;
+    color: #555;
+}
+
+.intro {
+    margin: 2em 0;
+    color: #555;
+    font-size: 15px;
+}
+
+.intro p {
+    padding: 1em 4em 0 4em;
+}
+
+
+.text-container.list {
+    display: flex;
+    justify-content: center;
+}
+
+textarea {
+    background-color: #fff;
+    white-space: pre;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding: 1em;
+    border: 1px solid #cfdff9;
+    border-radius: 5px;
+    resize: none;
+    height: 250px;
+    width: 100%;
+    margin: .5em 0;
+    transition: border-color .3s linear;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#regexInputs input {
+    background-color: #fff;
+    padding: .2em .5em;
+    border: 1px solid #cfdff9;
+    border-radius: 5px;
+    margin: .5em;
+    transition: border-color .3s linear;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+textarea:focus, #regexInputs input:focus {
+    outline: none;
+    border-color: #70BEFF;
+}
+
+textarea.moodle {
+    height: 250px;
+    width: 100%;
+    margin: .5em 0;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+textarea.list {
+    height: 500px;
+    width: 48%;
+    margin: .5em auto;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+
+main .controls {
+    display: flex;
+    margin: .5em 0;
+    justify-content: center;
+}
+
+button {
+    display: inline-block;
+    background-color: #008aff;
+    border: 1px solid #008aff;
+    border-radius: 2px;
+    padding: .5em .75em;
+    margin: 0 2em;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    width: 8em;
+    transition: background-color .3s linear;
+}
+
+button:hover {
+    background-color: #70BEFF;
+}
+
+footer {
+    border-bottom: 1px solid lightgray;
+    padding: 1em 0 0 0;
+    margin: auto;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    background-color: #f0f0f0;
+    vertical-align: center;
+    height: 5em;
+    padding: 2em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 53em) {
+    header nav {
+        display: none;
+    }
+
+    .intro p {
+        padding: 1em 0 0 0;
+    }
+}
+
+@media (max-width: 28em) {
+    html {
+        font-size: 11px;
+    }
+}

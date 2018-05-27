@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Text Utilities</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/moodle.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54783083-1"></script>
+    <script src="scripts/analytics.js"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <a href="index.html" class="index"><span class="tu">TextUtilities</span>.net</a>
+        </div>
+        
+        <nav>
+            <a href="list.html">List Transform</a>
+            <a class="active" href="timesheet.html">Timesheet Processor</a>
+            <a href="moodle.html">Moodle Data Transform</a>
+            <a href="regex.html">RegEx Validation</a>
+        </nav>
+    </header>
+    <h1 class="title">Timesheet Processor</h1>    
+    <main>
+        <div class="intro">
+            <p>Click on the button to copy the text from the text field.  Try to paste the text (e.g. ctrl-v) afterwards in a different window, to se the effect</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut, reiciendis. Accusantium, totam aut. A, officia aliquam architecto praesentium quas consequatur odio dolor sunt asperiores accusantium fugit ipsa unde, officiis vero!</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit fugit autem exercitationem eum quisquam! Tempore quod, excepturi assumenda placeat odit at ipsam aut ducimus? Consectetur rem perspiciatis sed provident reiciendis.
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est optio nihil nam aperiam hic aliquam obcaecati reprehenderit id ipsam laboriosam, reiciendis nesciunt temporibus ab. At excepturi quas quam accusantium omnis?</p>
+            </p>
+        </div>
+        <textarea id="text-input">Input here.</textarea>
+        <div class="controls">
+            <button onclick="hourCalc()">Calculate</button>
+        </div>
+        <textarea id="text-output">Output here.</textarea>
+        <footer>
+                <p>Some footer here</p>
+        </footer>
+    </main>
+    <script>
+        function hourCalc() {
+        var copyText = document.getElementById("text-input");
+        var totalHours = 0;
+        copyText.select();
+        document.execCommand("Copy");
+        var textLines = copyText.value.split('\n');
+        console.log(textLines);
+        for (let i = 0; i < textLines.length; i++) {
+            totalHours += getHours(textLines[i]);
+        };
+        //alert("Total Hours = " + totalHours);
+        document.getElementById("text-output").value = totalHours;
+    };
+    function getHours(line) {
+        var hours = 0;
+        var pattHr = /\((\d{1,}) hr.?\)/i;
+        var pattMin = /\((\d{1,}) min.?\)/i;
+        if (pattHr.test(line)) {
+            hours = pattHr.exec(line)[1];
+        };
+        if (pattMin.test(line)) {
+            hours = pattMin.exec(line)[1]/60;
+        };
+        console.log(hours);
+        return parseFloat(hours);
+    };
+
+    </script>
+</body>
+</html>

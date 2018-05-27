@@ -149,9 +149,9 @@ textarea {
     font-family: 'Courier New', Courier, monospace;
 }
 
-#regexInputs input {
+input {
     background-color: #fff;
-    padding: .2em .5em;
+    padding: .5em .5em;
     border: 1px solid #cfdff9;
     border-radius: 5px;
     margin: .5em;
@@ -159,7 +159,13 @@ textarea {
     font-family: 'Courier New', Courier, monospace;
 }
 
-textarea:focus, #regexInputs input:focus {
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  appearance: none;
+  -webkit-appearance: none; 
+}
+
+textarea:focus, input:focus {
     outline: none;
     border-color: #70BEFF;
 }
@@ -180,8 +186,7 @@ textarea.list {
     overflow-y: auto;
 }
 
-
-main .controls {
+.field-inputs,.controls {
     display: flex;
     margin: .5em 0;
     justify-content: center;

@@ -1,2 +1,2 @@
 # text-utilities
-Handy text manipulation apps geared towards analysts and coders
+Handy text manipulation apps geared towards data analysts and coders

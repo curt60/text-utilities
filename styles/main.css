@@ -159,10 +159,13 @@ input {
     font-family: 'Courier New', Courier, monospace;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  appearance: none;
-  -webkit-appearance: none; 
+#headings {
+    width: 90%;
+    margin-left: 0;
+}
+
+#delimitter {
+    margin-right: 0;
 }
 
 textarea:focus, input:focus {

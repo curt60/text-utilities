@@ -1,41 +1,39 @@
 function moodleTransform() {
     //store inputs
+    const NO_DIMS = document.getElementById("no-dims").value;
+    const DELIM = document.getElementById("delimitter").value || 'xxxxxx'; //default to unlikely delimitter value if one not entered
     var header = document.getElementById("headings").value;
-    var noDims = 2; //add input field
-    var delim = document.getElementById("delimitter").value;
     var copyText = document.getElementById("text-input").value;
 
     //split headings into columns
-    var headerCols = header.split('\t'); 
-        for (i = 0; i < headerCols.length; i++) {
-            headerCols[i] = headerCols[i].split(delim);
-        }
+    header = header.toLowerCase().split('\t'); 
+    header[NO_DIMS] = header[NO_DIMS].split(DELIM);
 
-    //determine column structure headings input
-     var noCols = []
-     for (let i = 0; i < headerCols.length; i++) {
-         noCols[i] = headerCols[i].length;
-     }
-  
     //clean up text before processing
-    copyText = copyText.replace(/\t-/g, '\t').toLowerCase();
+    copyText = copyText.toLowerCase();
+    copyText = copyText.replace(/\t-\t/g, '\t\t');
+    copyText = copyText.replace(/\t-\n/g, '\t\n');
 
     //split lines
     var textLines = copyText.split('\n');
     
-     //split columns
-    for (let i = 0; i < textLines.length; i++) {
-        textLines[i] = textLines[i].split('\t');
-        for (j = 0; j < textLines[i].length; j++) {
-            textLines[i][j] = textLines[i][j].split(delim);
-        }
+    //split first row into columns
+    textLines[0] = textLines[0].split('\t');
+    
+    //further split assignment columns into categories
+    for (let i = NO_DIMS; i < textLines[0].length; i++) {
+        textLines[0][i] = textLines[0][i].split(DELIM);
     }
- 
-    //trim whitepace
-    for (let i = 0; i < textLines.length; i++) {
-        for (let j = 0; j < textLines[i].length; j++) {
-            for (let k = 0; k < textLines[i][j].length; k++) {
-                textLines[i][j][k] = textLines[i][j][k].trim();
+    //split rest of rows into columns
+    for (let i = 1; i < textLines.length; i++) {
+        textLines[i] = textLines[i].split('\t');
+    }
+    
+    //trim whitepace fom first row
+    for (let i = 0; i < textLines[0].length; i++) {
+        if (i === NO_DIMS) {
+            for (let j = 0; j < textLines[0][i].length; j++) {
+                textLines[0][i][j] = textLines[0][i][j].trim();
             }
         }
     }
@@ -44,27 +42,35 @@ function moodleTransform() {
     var outputText = "";
     
     //push header row to output
-    for (let i = 0; i < noCols.length; i++) {
-        for (let j = 0; j < noCols[i]; j++) {
-            outputText += headerCols[i][j] + '\t';
-        } 
+    for (let i = 0; i < header.length; i++) {
+        if (i === NO_DIMS) {
+            for (let j = 0; j < header[i].length; j++) {
+                outputText += header[i][j] + '\t';
+            }
+        }
+        else {
+            outputText += header[i];
+            if (i < header.length - 1) outputText += '\t';
+        }
     }
-    
+
     //push data to output
     for (let row = 1; row < textLines.length; row++) {
         //loop for each row in output
-        for (let col = noCols.length - noDims; col < noCols.length; col++) {
+        //skip incomplete rows
+        if (textLines[row].length < textLines[0].length) break;
+        for (let col = NO_DIMS; col < textLines[0].length; col++) {
             outputText += '\n';
             //write all dimensions
-            for (let dim = 0; dim < noDims; dim++) {
-                outputText += textLines[row][dim][0] + '\t';
+            for (let dim = 0; dim < NO_DIMS; dim++) {
+                outputText += textLines[row][dim] + '\t';
             }
             //write all assignment categories
-            for (let cat = 0; cat < noCols[col]; cat++) {
+            for (let cat = 0; cat < header[NO_DIMS].length; cat++) {
                 outputText += textLines[0][col][cat] || '';
                 outputText += '\t';
             }
-        outputText += textLines[row][col];
+            outputText += textLines[row][col];
         }
         
     }

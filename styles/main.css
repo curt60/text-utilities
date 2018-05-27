@@ -166,6 +166,11 @@ input {
 
 #delimitter {
     margin-right: 0;
+    margin-left: 0;
+}
+
+#no-dims {
+    margin-right: 0;
 }
 
 textarea:focus, input:focus {

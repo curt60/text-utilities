@@ -31,12 +31,13 @@
     <h1 class="title">Break Timer</h1>    
     <main>
         <div class="controls timer">
-            <button>30 mins</button>
-            <button>1 hr</button>
-            <button>2 hrs</button>
+            <button onclick="startTimer(.1)">6 sec</button>
+            <button onclick="startTimer(30)">30 mins</button>
+            <button onclick="startTimer(60)">1 hr</button>
+            <button onclick="startTimer(120)">2 hrs</button>
         </div>
-        <div id="countdown">
-            <p>0:00:00</p>
+        <div>
+            <p id="countdown"></p>
         </div>
         <div style="height: 10em"></div>
     </main>

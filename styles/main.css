@@ -195,12 +195,17 @@ textarea.list {
     justify-content: center;
 }
 
+.controls.timer {
+    margin: 0 auto;
+    padding: 3em;
+}
+
 button {
     display: inline-block;
     background-color: #008aff;
     border: 1px solid #008aff;
     border-radius: 2px;
-    padding: .5em .75em;
+    padding: 0.5em .75em;
     margin: 0 2em;
     color: white;
     outline: none;
@@ -213,18 +218,22 @@ button:hover {
     background-color: #70BEFF;
 }
 
+#countdown {
+    font-size: 6em;
+    text-align: center;
+}
+
 footer {
-    border-bottom: 1px solid lightgray;
-    padding: 1em 0 0 0;
-    margin: auto;
+    border-top: 1px solid #ccc;
+    margin: 3em 0 0 0;
     text-align: center;
     font-size: 13px;
-    color: #666;
+    color: #555;
     background-color: #f0f0f0;
     vertical-align: center;
-    height: 5em;
-    padding: 2em;
-    position: absolute;
+    height: 4em;
+    padding: 1.5em;
+    position: static;
     bottom: 0;
     width: 100%;
 }

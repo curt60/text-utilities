@@ -5,6 +5,7 @@
 }
 
 html {
+    min-width: 350px;
     background-color: #f9f9f9;
     overflow-y: scroll;
     height: 100%;
@@ -24,11 +25,12 @@ body {
 
 header {
     background: 0 0;
-    width: 55em;
+    width: 850px;
     margin: 0 auto;
     max-width: 95%;
-    padding: 1em 0 .75em;
-    height: 3.75em;
+    padding: 10px 0;
+    height: 60px;
+    font-size: 30px;
 }
 
 header:after {
@@ -37,14 +39,12 @@ header:after {
 
 header .logo {
     float: left;
-    height: 100%;
 }
 
 header .logo .index {
-    font-size: 30px;
     letter-spacing: 5px;
     text-rendering: geometricPrecision;
-    display: block;
+    display: inline-block;
     color: #888;
     transition: color .2s linear;
 }
@@ -54,6 +54,8 @@ header .logo .index:hover {
 }
 
 header .logo .index .tu {
+    display: inline-block;
+    height: 100%;
     color: #008aff;
     transition: color .2s linear;
 }
@@ -88,17 +90,16 @@ a.active:hover {
 
 header nav {
     float: right;
-    height: 100%;
 }
 
 header nav a {
-    margin-left: 1.5em;
-    line-height: 3em;
+    font-size: 16px;
+    margin-left: 10px;
 }
 
 main {
     max-width: 95%;
-    width: 65em;
+    width: 850px;
     margin: 0 auto;
 }
 
@@ -125,7 +126,7 @@ h1.title {
 
 .text-container.list {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 textarea {
@@ -154,19 +155,12 @@ input {
     font-family: 'Courier New', Courier, monospace;
 }
 
-#headings {
-    width: 90%;
-    margin-left: 0;
+#regexInputs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-#delimitter {
-    margin-right: 0;
-    margin-left: 0;
-}
-
-#no-dims {
-    margin-right: 0;
-}
 
 textarea:focus, input:focus {
     outline: none;
@@ -183,16 +177,21 @@ textarea.moodle {
 
 textarea.list {
     height: 500px;
-    width: 48%;
-    margin: .5em auto;
+    width: 49%;
+    margin: 10px 1px;
     overflow-x: auto;
     overflow-y: auto;
 }
 
 .field-inputs,.controls {
     display: flex;
+    flex-wrap: wrap;
     margin: .5em 0;
     justify-content: center;
+}
+
+.field-inputs.moodle {
+    margin: 0 10px;
 }
 
 .controls.timer {
@@ -211,6 +210,10 @@ button {
     outline: none;
     cursor: pointer;
     width: 8em;
+    min-width: 5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: background-color .3s linear;
 }
 
@@ -226,30 +229,40 @@ button:hover {
 footer {
     border-top: 1px solid #ccc;
     margin: 3em 0 0 0;
-    text-align: center;
     font-size: 13px;
+    text-align: center;
     color: #555;
     background-color: #f0f0f0;
-    vertical-align: center;
-    height: 4em;
-    padding: 1.5em;
+    height: 65px;
+    padding: 10px 20px;
     position: static;
     bottom: 0;
     width: 100%;
 }
 
-@media (max-width: 53em) {
-    header nav {
-        display: none;
+
+@media (max-width: 650px) {
+    header {
+        height: 100px;
+    }
+    
+    div.logo, a.index, header nav {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+
+    h1.title {
+        width: 100%;
+        margin: 1em 0;
+    }
+
+    button {
+        margin: 3%;
     }
 
     .intro p {
         padding: 1em 0 0 0;
-    }
-}
-
-@media (max-width: 28em) {
-    html {
-        font-size: 11px;
     }
 }

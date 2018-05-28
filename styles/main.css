@@ -32,18 +32,15 @@ header {
 }
 
 header:after {
-    clear: both
+    clear: both;
 }
 
 header .logo {
     float: left;
-    height: 2em;
-    line-height: 2em;
-    vertical-align: middle;
+    height: 100%;
 }
 
 header .logo .index {
-    position: relative;
     font-size: 30px;
     letter-spacing: 5px;
     text-rendering: geometricPrecision;
@@ -90,15 +87,13 @@ a.active:hover {
 }
 
 header nav {
-    line-height: 2em;
-    float: right
+    float: right;
+    height: 100%;
 }
 
 header nav a {
-    vertical-align: middle;
-    position: relative;
-    height: 2em;
-    margin-left: 2em;
+    margin-left: 1.5em;
+    line-height: 3em;
 }
 
 main {

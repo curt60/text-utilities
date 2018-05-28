@@ -1,23 +1,10 @@
 function moodleTransform() {
-    //test time alert functionality
-    
-    // var myWindow = function() {
-    //     var myWindow = window.open("", "", "width=200, height=100");   // Opens a new window
-    //     myWindow.document.write("<p>A new window!</p>");         // Some text in the new window
-    //     myWindow.focus();  
-    // }
-    
-    // setTimeout(myWindow, 3000);
         
     //store inputs
     var noDims = parseInt(document.getElementById("no-dims").value);
+    var noCats = parseInt(document.getElementById("no-cats").value);
     var delim = document.getElementById("delimitter").value || 'xxxxxx'; //default to unlikely delimitter value if one not entered
-    var header = document.getElementById("headings").value;
     var copyText = document.getElementById("text-input").value;
-
-    //split headings into columns
-    header = header.toLowerCase().split('\t'); 
-    header[noDims] = header[noDims].split(delim);
 
     //split lines
     var textLines = copyText.toLowerCase().split('\n');
@@ -64,18 +51,15 @@ function moodleTransform() {
     //start output
     var outputText = "";
     
-    //push header row to output
-    for (let i = 0; i < header.length; i++) {
-        if (i === noDims) {
-            for (let j = 0; j < header[i].length; j++) {
-                outputText += header[i][j] + '\t';
-            }
-        }
-        else {
-            outputText += header[i];
-            if (i < header.length - 1) outputText += '\t';
-        }
+    //create output header - dimensions
+    for (let i = 0; i < noDims; i++) {
+        outputText += "dim" + (i + 1) + "\t";
     }
+    //create output header - categories
+    for (let i = 0; i < noCats; i++) {
+        outputText += "cat" + (i + 1) + "\t";
+    }
+    outputText += "grade";
 
     //push data to output
     for (let row = 1; row < textLines.length; row++) {
@@ -89,7 +73,7 @@ function moodleTransform() {
                 outputText += textLines[row][dim] + '\t';
             }
             //write all assignment categories
-            for (let cat = 0; cat < header[noDims].length; cat++) {
+            for (let cat = 0; cat < noCats; cat++) {
                 outputText += textLines[0][col][cat] || '';
                 outputText += '\t';
             }

@@ -7,20 +7,18 @@
 html {
     min-width: 350px;
     background-color: #f9f9f9;
-    overflow-y: scroll;
-    height: 100%;
-    min-height: 100%;
     font-size:16px;
+    height: 100%;
 }
 
 body {
+    position: relative;
+    min-height: 100%;    
     font-family: "PT Sans",sans-serif;
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
     background: 0 0;
     color: #333;
     min-width: 18em;
+    padding: 0 0 85px 0;
 }
 
 header {
@@ -195,8 +193,8 @@ textarea.list {
 }
 
 .controls.timer {
-    margin: 0 auto;
-    padding: 3em;
+    margin: 10px auto;
+    padding: 0;
 }
 
 button {
@@ -204,8 +202,9 @@ button {
     background-color: #008aff;
     border: 1px solid #008aff;
     border-radius: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2), 0 3px 10px 0 rgba(0,0,0,.19);
     padding: 0.5em .75em;
-    margin: 0 2em;
+    margin: 10px 20px;
     color: white;
     outline: none;
     cursor: pointer;
@@ -214,19 +213,30 @@ button {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: background-color .3s linear;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: .3s; 
+    transition-timing-function: linear;
 }
 
 button:hover {
     background-color: #70BEFF;
+    border-color: #70BEFF;
 }
 
-#countdown {
-    font-size: 6em;
+button:active {
+    box-shadow: none;
+}
+
+p#countdown {
+    height: 45px;
+    font-size: 30px;
     text-align: center;
+    margin: 20px;
 }
 
 footer {
+    position: absolute;
+    bottom: 0;
     border-top: 1px solid #ccc;
     margin: 3em 0 0 0;
     font-size: 13px;
@@ -235,9 +245,18 @@ footer {
     background-color: #f0f0f0;
     height: 65px;
     padding: 10px 20px;
-    position: static;
-    bottom: 0;
     width: 100%;
+}
+
+footer > p {
+    position: relative;
+    top: 15px;
+}
+
+div.timer-pop {
+    font-size: 30px;
+    text-align: center;
+    padding: 60px 0 0 0;
 }
 
 

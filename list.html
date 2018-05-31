@@ -43,7 +43,7 @@
         <div style="height: 3em"></div>
     </main>
     <footer>
-            <p></p>
+            <p>Copyright Curtis Robinson</p>
     </footer>
     <script>
     function commaList() {
@@ -51,6 +51,14 @@
         copyText.select();
         document.execCommand("Copy");
         alert("Copied the text: " + copyText.value);
+        
+        var requesting = browser.permissions.request(clipboardRead);
+
+        var pasteText = document.getElementById("text-input");
+        pasteText.focus();
+        document.execCommand("paste");
+        console.log(pasteText.textContent);
+
     };
     </script>
 </body>

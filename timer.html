@@ -30,7 +30,7 @@
     <h1 class="title">Break Timer</h1>    
     <main>
         <div class="controls timer">
-            <button onclick="startTimer(.1)">6 sec</button>
+            <button onclick="startTimer(3/60)">1 min</button>
             <button onclick="startTimer(30)">30 mins</button>
             <button onclick="startTimer(60)">1 hr</button>
             <button onclick="startTimer(120)">2 hrs</button>
@@ -38,7 +38,10 @@
         <div>
             <p id="countdown"></p>
         </div>
-        <div style="height: 10em"></div>
+        <div style="height: 50px"></div>
+        <div class="controls timer">
+        <button onclick="location.reload()">Reset</button>
+        </div>
     </main>
     <footer>
         <p></p>

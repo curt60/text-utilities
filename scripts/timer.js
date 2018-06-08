@@ -8,7 +8,7 @@ var expWindow = function() {
         body: "Take a break!",
         icon: "./favicon.png",
         badge: "./favicon.png",
-        image: "./images/favicon_128x128.png",
+        //image: "./images/favicon_128x128.png",
         requireInteraction: true
     }
     var expNotification = new Notification("Text Utilities", notificationOptions);  
@@ -40,7 +40,7 @@ var startTimer = function(mins) {
         var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
         // Display remaining time
-        document.getElementById("countdown").innerHTML = hours + " hr "
+        document.getElementById("countdown").innerHTML = hours + " hrs "
             + minutes + " mins ";
 
         if (timeLeft < 0) {
